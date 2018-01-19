@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GameManager.Web.Models.LoanViewModel>
+
+@{
+    ViewData["Title"] = "Listagem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Empréstimos</h2>
+
+<p>
+    <a asp-action="Create">Novo</a>
+</p>
+<p>
+    <a asp-action="AskForReturn">Cobrar retorno de atrasados</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.GameId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FriendId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LendDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlreadyAskedForReturn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BorrowedGame.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Friend.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LendDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlreadyAskedForReturn)
+            </td>
+            <td>
+                @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Excluir", "Delete", new { id=item.Id }) |
+                @Html.ActionLink("Devolver", "Return", new { id = item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

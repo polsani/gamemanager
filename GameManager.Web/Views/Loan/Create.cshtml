@@ -1,0 +1,50 @@
+﻿@model GameManager.Web.Models.LoanViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Novo</h2>
+
+<h4>Empréstimo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Save">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="LendDate" class="control-label"></label>
+                <input asp-for="LendDate" class="form-control" />
+                <span asp-validation-for="LendDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReturnDate" class="control-label"></label>
+                <input asp-for="ReturnDate" class="form-control" />
+                <span asp-validation-for="ReturnDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GameId" class="control-label"></label>
+                <select class="form-control" id="GameId" name="GameId" asp-for="GameId" asp-items="@(new SelectList(Model.Games, "Id", "Title"))"></select>
+                <span asp-validation-for="GameId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FriendId" class="control-label"></label>
+                <select class="form-control" id="FriendId" name="FriendId" asp-for="FriendId" asp-items="@(new SelectList(Model.Friends, "Id", "Name"))"></select>
+                <span asp-validation-for="FriendId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar a listagem</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

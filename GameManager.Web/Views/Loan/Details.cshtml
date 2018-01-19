@@ -1,0 +1,60 @@
+﻿@model GameManager.Web.Models.LoanViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Empréstimo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LendDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LendDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReturnDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReturnedDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GameId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BorrowedGame.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FriendId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Friend.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlreadyAskedForReturn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlreadyAskedForReturn)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Voltar a listagem</a>
+</div>

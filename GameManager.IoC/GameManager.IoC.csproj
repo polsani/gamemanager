@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GameManager.Application\GameManager.Application.csproj" />
+    <ProjectReference Include="..\GameManager.Data\GameManager.Data.csproj" />
+    <ProjectReference Include="..\GameManager.Domain\GameManager.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

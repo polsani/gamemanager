@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GameManager.Web.Models.GameViewModel>
+
+@{
+    ViewData["Title"] = "Listagem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Jogos</h2>
+
+<p>
+    <a asp-action="Create">Novo</a>
+    <div class="form-group">
+        <label class="control-label">Filtro</label>
+        <input id="txtTitleFilter" type="text" class="form-control" placeholder="Digite o título do jogo" />
+        @Html.AntiForgeryToken()
+    </div>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Borrowed)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="gridGames">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="col-md-7">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td class="col-md-1" style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.Borrowed)
+                </td>
+                <td class="col-md-4" style="text-align:center">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                    <a href="#" onclick="javascript:DeleteGame('@item.Id', '@item.Title');return false;">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script src="lib/jquery/dist/jquery.js"></script>
+<script src="~/js/site.js"></script>
